@@ -27,7 +27,7 @@ const translations = {
     },
     faq: ['Перед дорогой', 'Хорошо знать заранее', ['Как выбрать подходящий маршрут?', 'Ориентируйтесь на свою подготовку и привычный темп. Для первого знакомства подойдёт поездка вокруг Иссык-Куля с короткими прогулками. Горные походы требуют отдельного обсуждения нагрузки, высоты и снаряжения с гидом.'], ['Что взять с собой в горы?', 'Удобную обувь с цепкой подошвой, тёплый слой, защиту от дождя, головной убор, солнцезащитные очки и личные необходимые вещи. Уточните окончательный список у организатора: он зависит от сезона, высоты и ночёвок.'], ['Можно ли изменить программу под себя?', 'Эти маршруты — отправная точка для планирования. Перед бронированием с выбранным организатором согласуйте темп, транспорт, проживание, питание и запасные варианты на случай погоды.']],
     footer: ['Вдохновение для путешествий по Кыргызстану.<br>Демонстрационная концепция туристического сайта.', 'Наверх ↑'],
-    dialog: ['Закрыть', 'Пример программы. Доступность дорог, нагрузку и условия необходимо согласовать с организатором перед поездкой.', 'Выбрать этот маршрут'],
+    dialog: ['Закрыть', 'Пример программы. Доступность дорог, нагрузку и условия необходимо согласовать с организатором перед поездкой.', 'Уточнить стоимость'],
   },
   en: {
     title: 'ALA TOO — Kyrgyzstan is closer than you think',
@@ -57,7 +57,7 @@ const translations = {
     },
     faq: ['Before you go', 'Good to know', ['How do I choose the right route?', 'Consider your fitness and preferred pace. A trip around Issyk-Kul with short walks is a gentle introduction. Discuss exertion, altitude and equipment with a guide before a mountain trek.'], ['What should I bring to the mountains?', 'Bring sturdy shoes, warm layers, rain protection, a hat, sunglasses and personal essentials. Confirm the final packing list with the organizer; it depends on season, altitude and overnight stays.'], ['Can I tailor the itinerary?', 'These routes are a starting point. Before booking, agree on pace, transport, lodging, meals and weather alternatives with your chosen organizer.']],
     footer: ['Travel inspiration for Kyrgyzstan.<br>A tourism website concept.', 'Back to top ↑'],
-    dialog: ['Close', 'Sample itinerary. Confirm road access, difficulty and conditions with the organizer before travelling.', 'Choose this route'],
+    dialog: ['Close', 'Sample itinerary. Confirm road access, difficulty and conditions with the organizer before travelling.', 'Ask about pricing'],
   },
   ky: {
     title: 'ALA TOO — Кыргызстан сиз ойлогондон да жакын',
@@ -87,13 +87,14 @@ const translations = {
     },
     faq: ['Жолго чыгарда', 'Алдын ала билип алыңыз', ['Өзүмө ылайыктуу маршрутту кантип тандайм?', 'Даярдыгыңызды жана өзүңүзгө ыңгайлуу темпти эске алыңыз. Алгачкы сапар үчүн Ысык-Көлдү кыска сейилдер менен айланып чыгуу ылайыктуу. Тоого жөө жүрүүдөн мурда жүктөмдү, бийиктикти жана жабдууларды гид менен тактаңыз.'], ['Тоого эмне ала баруу керек?', 'Тайгаланбаган бут кийим, жылуу кийим, жамгырдан коргонуу, баш кийим, күндөн коргоочу көз айнек жана керектүү жеке буюмдарды алыңыз. Акыркы тизмени уюштуруучу менен тактаңыз: ал мезгилге, бийиктикке жана түнөөгө жараша болот.'], ['Программаны өзгөртүүгө болобу?', 'Бул маршруттар пландоого баштапкы үлгү болот. Брондоодон мурда темпти, транспортту, түнөөнү, тамакты жана аба ырайы начарлаганда эмне кылууну уюштуруучу менен макулдашыңыз.']],
     footer: ['Кыргызстанга саякаттоо үчүн шыктануу.<br>Туристтик сайттын демо-концепциясы.', 'Жогору ↑'],
-    dialog: ['Жабуу', 'Бул үлгү программа. Сапар алдында жол шарттарын, жүктөмдү жана башка жагдайларды уюштуруучу менен тактаңыз.', 'Бул маршрутту тандоо'],
+    dialog: ['Жабуу', 'Бул үлгү программа. Сапар алдында жол шарттарын, жүктөмдү жана башка жагдайларды уюштуруучу менен тактаңыз.', 'Баасын тактоо'],
   },
 };
 
 const routeDetails = {
   ru: {
     labels: { stops: 'Остановки и путь', activity: 'Активность', lodging: 'Ночёвки' },
+    price: { title: 'Стоимость и состав', value: 'Индивидуальный расчёт', note: 'Цена зависит от дат, размера группы и согласованной программы. До бронирования уточните, включены ли транспорт, проживание, питание, услуги гида и входные билеты.' },
     routes: {
       lake: { stops: 'Бишкек → северный берег → Каракол → южный берег → Бишкек', activity: 'Спокойные прогулки и переезды с остановками.', lodging: 'В демонстрационной программе не указано; уточните у организатора.' },
       mountain: { stops: 'Бишкек → ущелье Ала-Арча → Бишкек', activity: 'Пешие прогулки; сложность троп подбирается по подготовке группы.', lodging: 'Базирование в Бишкеке; размещение необходимо согласовать.' },
@@ -102,6 +103,7 @@ const routeDetails = {
   },
   en: {
     labels: { stops: 'Route & stops', activity: 'Activity', lodging: 'Overnight stay' },
+    price: { title: 'Price & what is included', value: 'Price on request', note: 'The price depends on dates, group size and the agreed itinerary. Before booking, confirm whether transport, lodging, meals, guide services and entrance fees are included.' },
     routes: {
       lake: { stops: 'Bishkek → north shore → Karakol → south shore → Bishkek', activity: 'Easy walks and scenic drives with stops.', lodging: 'Not specified in this sample itinerary; confirm with the organizer.' },
       mountain: { stops: 'Bishkek → Ala-Archa gorge → Bishkek', activity: 'Hiking; trail difficulty is chosen to match the group.', lodging: 'Based in Bishkek; accommodation needs to be confirmed.' },
@@ -110,6 +112,7 @@ const routeDetails = {
   },
   ky: {
     labels: { stops: 'Жол жана аялдамалар', activity: 'Иш-аракеттер', lodging: 'Түнөө' },
+    price: { title: 'Баасы жана турдун курамы', value: 'Баасы суроо-талап боюнча', note: 'Баасы күндөргө, топтун көлөмүнө жана макулдашылган программага жараша болот. Брондоодон мурда транспорт, түнөө, тамак-аш, гид кызматы жана кирүү акысы камтылганын тактаңыз.' },
     routes: {
       lake: { stops: 'Бишкек → түндүк жээк → Каракол → түштүк жээк → Бишкек', activity: 'Жай сейилдөө жана кооз жерлерге токтоп жол жүрүү.', lodging: 'Үлгү программада көрсөтүлгөн эмес; уюштуруучу менен тактаңыз.' },
       mountain: { stops: 'Бишкек → Ала-Арча капчыгайы → Бишкек', activity: 'Жөө жүрүштөр; жолдордун татаалдыгы топтун даярдыгына жараша тандалат.', lodging: 'Бишкекте жайгашуу; түнөө шарттарын тактоо керек.' },
@@ -125,6 +128,10 @@ languageStyle.textContent = `.language{width:auto;border:1px solid #a6b1a8;borde
 #tourDialog .route-facts>div{border-top:1px solid #e6e8df;padding:12px 0}
 #tourDialog .route-facts dt{color:#697b72;font-size:10px;font-weight:700;text-transform:uppercase}
 #tourDialog .route-facts dd{font-size:12px;line-height:1.6;margin:6px 0 0;overflow-wrap:anywhere}
+#tourDialog .route-price{border-top:1px solid #e6e8df;border-bottom:1px solid #e6e8df;margin:16px 0;padding:16px 0}
+#tourDialog .route-price h4{font-size:15px;margin:0 0 10px}
+#tourDialog .route-price p{font-size:12px;line-height:1.6;margin:6px 0}
+#tourDialog .route-price strong{color:var(--orange);font-size:15px}
 header nav a,.hero-bottom a,footer .outline{transition:color .2s ease}
 header nav a:hover,header nav a:focus-visible,.hero-bottom a:hover,.hero-bottom a:focus-visible,footer .outline:hover,footer .outline:focus-visible{color:var(--orange)}
 .card h3{transform-origin:left center;transition:color .2s ease,transform .2s ease}
@@ -242,6 +249,9 @@ document.querySelectorAll('[data-tour]').forEach(button => {
     document.getElementById('routeActivity').textContent = routeDetail.activity;
     document.getElementById('lodgingLabel').textContent = details.labels.lodging;
     document.getElementById('routeLodging').textContent = routeDetail.lodging;
+    document.getElementById('priceTitle').textContent = details.price.title;
+    document.getElementById('routePrice').textContent = details.price.value;
+    document.getElementById('priceNote').textContent = details.price.note;
     document.getElementById('dialogDays').replaceChildren(...route.days.map(day => {
       const item = document.createElement('li');
       item.textContent = day;
