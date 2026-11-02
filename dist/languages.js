@@ -91,9 +91,40 @@ const translations = {
   },
 };
 
+const routeDetails = {
+  ru: {
+    labels: { stops: 'Остановки и путь', activity: 'Активность', lodging: 'Ночёвки' },
+    routes: {
+      lake: { stops: 'Бишкек → северный берег → Каракол → южный берег → Бишкек', activity: 'Спокойные прогулки и переезды с остановками.', lodging: 'В демонстрационной программе не указано; уточните у организатора.' },
+      mountain: { stops: 'Бишкек → ущелье Ала-Арча → Бишкек', activity: 'Пешие прогулки; сложность троп подбирается по подготовке группы.', lodging: 'Базирование в Бишкеке; размещение необходимо согласовать.' },
+      culture: { stops: 'Бишкек → Кочкор → Сон-Куль → Бишкек', activity: 'Переезды по горным дорогам и прогулки у озера; маршрут зависит от условий.', lodging: 'Ночёвка в юрточном лагере.' },
+    },
+  },
+  en: {
+    labels: { stops: 'Route & stops', activity: 'Activity', lodging: 'Overnight stay' },
+    routes: {
+      lake: { stops: 'Bishkek → north shore → Karakol → south shore → Bishkek', activity: 'Easy walks and scenic drives with stops.', lodging: 'Not specified in this sample itinerary; confirm with the organizer.' },
+      mountain: { stops: 'Bishkek → Ala-Archa gorge → Bishkek', activity: 'Hiking; trail difficulty is chosen to match the group.', lodging: 'Based in Bishkek; accommodation needs to be confirmed.' },
+      culture: { stops: 'Bishkek → Kochkor → Song-Kul → Bishkek', activity: 'Mountain-road transfers and walks by the lake; route depends on conditions.', lodging: 'Overnight at a yurt camp.' },
+    },
+  },
+  ky: {
+    labels: { stops: 'Жол жана аялдамалар', activity: 'Иш-аракеттер', lodging: 'Түнөө' },
+    routes: {
+      lake: { stops: 'Бишкек → түндүк жээк → Каракол → түштүк жээк → Бишкек', activity: 'Жай сейилдөө жана кооз жерлерге токтоп жол жүрүү.', lodging: 'Үлгү программада көрсөтүлгөн эмес; уюштуруучу менен тактаңыз.' },
+      mountain: { stops: 'Бишкек → Ала-Арча капчыгайы → Бишкек', activity: 'Жөө жүрүштөр; жолдордун татаалдыгы топтун даярдыгына жараша тандалат.', lodging: 'Бишкекте жайгашуу; түнөө шарттарын тактоо керек.' },
+      culture: { stops: 'Бишкек → Кочкор → Соң-Көл → Бишкек', activity: 'Тоолуу жолдордо жүрүү жана көл жээгинде сейилдөө; маршрут шартка жараша өзгөрөт.', lodging: 'Боз үй лагеринде түнөө.' },
+    },
+  },
+};
+
 const languageSelect = document.getElementById('language');
 const languageStyle = document.createElement('style');
 languageStyle.textContent = `.language{width:auto;border:1px solid #a6b1a8;border-radius:20px;background:transparent;color:var(--ink);padding:9px 10px;font-size:12px;font-weight:700;cursor:pointer}
+#tourDialog .route-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px;margin:20px 0}
+#tourDialog .route-facts>div{border-top:1px solid #e6e8df;padding:12px 0}
+#tourDialog .route-facts dt{color:#697b72;font-size:10px;font-weight:700;text-transform:uppercase}
+#tourDialog .route-facts dd{font-size:12px;line-height:1.6;margin:6px 0 0;overflow-wrap:anywhere}
 header nav a,.hero-bottom a,footer .outline{transition:color .2s ease}
 header nav a:hover,header nav a:focus-visible,.hero-bottom a:hover,.hero-bottom a:focus-visible,footer .outline:hover,footer .outline:focus-visible{color:var(--orange)}
 .card h3{transform-origin:left center;transition:color .2s ease,transform .2s ease}
@@ -103,6 +134,7 @@ header nav a:hover,header nav a:focus-visible,.hero-bottom a:hover,.hero-bottom 
 .hero h1 em{transition:color .2s ease}
 .hero h1 em:hover{color:#fff}
 @media(max-width:980px){header nav{display:none;position:absolute;top:75px;left:0;right:0;padding:25px;background:var(--paper);z-index:5;flex-direction:column}header nav.open{display:flex}header>.outline{display:none}.menu{display:block!important;background:transparent;border:0;font-size:24px;color:var(--ink)}}
+@media(max-width:600px){#tourDialog .route-facts{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){header nav a,.hero-bottom a,footer .outline,.card h3,.faq summary,.hero h1 em{transition:none}.card:hover h3,.card:focus-within h3{transform:none}}`;
 document.head.append(languageStyle);
 
@@ -197,9 +229,19 @@ function applyLanguage(language) {
 
 document.querySelectorAll('[data-tour]').forEach(button => {
   button.onclick = () => {
-    const route = translations[languageSelect.value].routes[button.dataset.tour];
+    selected = button.dataset.tour;
+    const language = languageSelect.value;
+    const route = translations[language].routes[button.dataset.tour];
+    const details = routeDetails[language];
+    const routeDetail = details.routes[button.dataset.tour];
     document.getElementById('dialogTitle').textContent = route.title;
     document.getElementById('dialogText').textContent = route.detail;
+    document.getElementById('stopsLabel').textContent = details.labels.stops;
+    document.getElementById('routeStops').textContent = routeDetail.stops;
+    document.getElementById('activityLabel').textContent = details.labels.activity;
+    document.getElementById('routeActivity').textContent = routeDetail.activity;
+    document.getElementById('lodgingLabel').textContent = details.labels.lodging;
+    document.getElementById('routeLodging').textContent = routeDetail.lodging;
     document.getElementById('dialogDays').replaceChildren(...route.days.map(day => {
       const item = document.createElement('li');
       item.textContent = day;
