@@ -1,8 +1,7 @@
 const translations = {
   ru: {
     title: 'ALA TOO — Кыргызстан ближе, чем кажется',
-    title: 'ALA TOO — Кыргызстан ближе, чем кажется',
-      languageLabel: 'Язык',
+    languageLabel: 'Язык',
     description: 'Откройте Кыргызстан: путешествия к Иссык-Кулю, Сон-Кулю и вершинам Тянь-Шаня.',
     home: 'ALA TOO — главная',
     menu: 'Открыть меню',
@@ -32,8 +31,7 @@ const translations = {
   },
   en: {
     title: 'ALA TOO — Kyrgyzstan is closer than you think',
-    title: 'ALA TOO — Kyrgyzstan is closer than you think',
-      languageLabel: 'Language',
+    languageLabel: 'Language',
     description: 'Discover Kyrgyzstan: travel to Issyk-Kul, Song-Kul and the peaks of the Tian Shan.',
     home: 'ALA TOO — home',
     menu: 'Open menu',
@@ -63,8 +61,7 @@ const translations = {
   },
   ky: {
     title: 'ALA TOO — Кыргызстан сиз ойлогондон да жакын',
-    title: 'ALA TOO — Кыргызстан сиз ойлогондон да жакын',
-      languageLabel: 'Тил',
+    languageLabel: 'Тил',
     description: 'Кыргызстанды ачыңыз: Ысык-Көлгө, Соң-Көлгө жана Тянь-Шандын чокуларына саякаттаңыз.',
     home: 'ALA TOO — башкы бет',
     menu: 'Менюну ачуу',
@@ -96,7 +93,17 @@ const translations = {
 
 const languageSelect = document.getElementById('language');
 const languageStyle = document.createElement('style');
-languageStyle.textContent = '.language{width:auto;border:1px solid #a6b1a8;border-radius:20px;background:transparent;color:var(--ink);padding:9px 10px;font-size:12px;font-weight:700;cursor:pointer}@media(max-width:980px){header nav{display:none;position:absolute;top:75px;left:0;right:0;padding:25px;background:var(--paper);z-index:5;flex-direction:column}header nav.open{display:flex}header>.outline{display:none}.menu{display:block!important;background:transparent;border:0;font-size:24px;color:var(--ink)}}';
+languageStyle.textContent = `.language{width:auto;border:1px solid #a6b1a8;border-radius:20px;background:transparent;color:var(--ink);padding:9px 10px;font-size:12px;font-weight:700;cursor:pointer}
+header nav a,.hero-bottom a,footer .outline{transition:color .2s ease}
+header nav a:hover,header nav a:focus-visible,.hero-bottom a:hover,.hero-bottom a:focus-visible,footer .outline:hover,footer .outline:focus-visible{color:var(--orange)}
+.card h3{transform-origin:left center;transition:color .2s ease,transform .2s ease}
+.card:hover h3,.card:focus-within h3{color:var(--orange);transform:translateX(4px)}
+.faq summary{transition:color .2s ease}
+.faq summary:hover,.faq summary:focus-visible{color:var(--orange)}
+.hero h1 em{transition:color .2s ease}
+.hero h1 em:hover{color:#fff}
+@media(max-width:980px){header nav{display:none;position:absolute;top:75px;left:0;right:0;padding:25px;background:var(--paper);z-index:5;flex-direction:column}header nav.open{display:flex}header>.outline{display:none}.menu{display:block!important;background:transparent;border:0;font-size:24px;color:var(--ink)}}
+@media(prefers-reduced-motion:reduce){header nav a,.hero-bottom a,footer .outline,.card h3,.faq summary,.hero h1 em{transition:none}.card:hover h3,.card:focus-within h3{transform:none}}`;
 document.head.append(languageStyle);
 
 function setLeadingText(element, value) {
@@ -117,8 +124,7 @@ function applyLanguage(language) {
   document.querySelector('meta[name="description"]').content = copy.description;
   document.querySelector('.logo').setAttribute('aria-label', copy.home);
   document.querySelector('.menu').setAttribute('aria-label', copy.menu);
-  document.querySelector('.menu').setAttribute('aria-label', copy.menu);
-    languageSelect.setAttribute('aria-label', copy.languageLabel);
+  languageSelect.setAttribute('aria-label', copy.languageLabel);
   document.querySelectorAll('nav a').forEach((el, index) => { el.textContent = copy.nav[index]; });
   setLeadingText(document.querySelector('header>.outline'), copy.nav[3]);
 
